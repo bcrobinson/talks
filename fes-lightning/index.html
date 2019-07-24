@@ -523,12 +523,9 @@ let maxAge3 = max(dogs, d => d.age); // OK
 This will create a new type that will add a "listen" member to every function on an object
 
 ```typescript
-type Listenable<Args> = { 
-    listen(callBack: (...args: Args) => void): Function
-}
+type Listenable<Args> = { listen(cb: (...args: Args) => void): void }
 type MakeListenable<T> = {
-    [K in keyof T]:
-        T[K] extends ((...args: infer Args) => void) ? 
+    [K in keyof T]: T[K] extends ((...args: infer Args) => void) ? 
             T[K] & Listenable<Args>:
             T[K];
 }
@@ -630,6 +627,117 @@ A brief list
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
