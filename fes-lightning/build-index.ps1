@@ -26,7 +26,7 @@ $content
 
 $indexHtml = Get-Content $indexPath -Raw;
 
-Write-Host "Slide Html:`----------------`n$slidesHtml`n----------------";
+# Write-Host "Slide Html:`----------------`n$slidesHtml`n----------------";
 
 #Write-Host "Original:`----------------`n$indexHtml`n----------------";
 

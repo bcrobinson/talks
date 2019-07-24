@@ -19,7 +19,7 @@ if (Test-Path $staticDir) {
 $null = New-Item 'static' -ItemType Dir
 $staticDir = Resolve-Path $staticDir |% Path;
 
-$files | Copy-Item -Destination $staticDir -Recurse -Verbose
+$files | Copy-Item -Destination $staticDir -Recurse
 
 if ((Test-Path $githubIoDir)) {
     Write-Warning "Clean: $githubIoDir";
@@ -28,4 +28,4 @@ if ((Test-Path $githubIoDir)) {
 
 $null = New-Item $githubIoDir -ItemType Dir;
 
-Get-ChildItem $staticDir | Copy-Item -Destination $githubIoDir -Recurse -Verbose;
+Get-ChildItem $staticDir | Copy-Item -Destination $githubIoDir -Recurse;
