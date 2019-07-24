@@ -1,7 +1,7 @@
 <section data-markdown>
 <textarea data-template>
 
-# Fun things to do with typescript
+# Fun things to do with TypeScript types
 
 FES July 2019
 
@@ -16,10 +16,22 @@ https://bit.ly/2YmeqR9
 <section data-markdown>
 <textarea data-template>
 
+# What is Typescript?
+
+* A superset of JavaScript
+* Allows you to add types annotations
+* Transpile ES6 into ES5 or ES3
+
+</textarea>
+</section>
+
+<section data-markdown>
+<textarea data-template>
+
 # Why Typescript
 
 * I'm crap at spalling
-* I like -~changing~~ renaming things
+* I like ~~changing~~ renaming things
 * It's more than `C# does JavaScript`
 
 </textarea>

@@ -134,7 +134,6 @@ module Tuples {
     // const shortHand: readonly ["big", 1]
 }
 
-
 module ConditionalTypes {
 
     // Built In
@@ -148,6 +147,8 @@ module ConditionalTypes {
 
     const callback = (a: number, b: string) => a + b.toString();
     // const callback: (a: number, b: string) => string
+    const callback2 = (d: Date) => d.getTime();
+    // const callback2: (a: Date) => number
 
     f1(callback, 42, "abc");
     f2(callback, [42, "abc"]);
@@ -166,6 +167,12 @@ module ConditionalTypes {
 }
 
 module MappedTypes {
+    type SimpledMappedType2 = {
+        [k in "a" | "b" | "c" ]: string
+    }
+
+    let c: SimpledMappedType2
+
     type SimpledMappedType<K extends string> = {
         [k in K]: string
     }

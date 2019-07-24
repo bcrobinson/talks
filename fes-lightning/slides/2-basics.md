@@ -29,7 +29,7 @@ function addOne(num: number) {
 <textarea data-template>
 ### Type inference
 
-Can infer types with explicit markup
+Can infer types without explicit markup
 
 ```typescript
 let geeting = "hello";
@@ -55,7 +55,7 @@ function stringify(value) {
 <!-- Get out of jail -->
 <section data-markdown>
 <textarea data-template>
-### any - The get out of jail free card
+### `any` - The get out of jail free card
 
 If your stuck and just want it to work, just cast to any
 
@@ -76,8 +76,8 @@ let result = (ohNoes as any).doMagic()
 <section data-markdown>
 <textarea data-template>
 
-### interfaces
-Used to define what Objects look like
+### Interfaces
+Used to define what objects look like
 
 ```typescript
 interface Cat {
@@ -91,7 +91,8 @@ interface Dog {
 }
 
 interface Robot {
-    serialNumber: number;
+    readonly serialNumber: number;
+    maker?: string;
     beep(): void;
 }
 ```
@@ -103,7 +104,7 @@ interface Robot {
 <section data-markdown>
 <textarea data-template>
 
-### interfaces
+### Interfaces
 
 Creating values
 
@@ -118,10 +119,12 @@ let cat: Cat = {
     purr: () => { /* ignore */ } 
 };
 
-let robot: Robot = { 
+function doWork(robot: Robot): void;
+
+doWork({ 
     serialNumber: 3142, 
     beep: () => console.log("boop")
-};
+});
 ```
 
 </textarea>
@@ -131,11 +134,11 @@ let robot: Robot = {
 <section data-markdown>
 <textarea data-template>
 
-### interfaces
+### Interfaces
 
 Uses structural typing
 
-"Walks like a duck, quacks like a duck then it is a duck"
+"If it walks like a duck, quacks and looks like a duck then it's a duck"
 
 ```typescript
 function makeOlder(animal: { age: number }) {
@@ -165,7 +168,7 @@ makeOlder(robot)
 ```typescript
 type AnotherString = string
 
-// Intersection Types
+// Union Types
 type StringOrNumber = string | number
 
 function doSomething(value: string | number);
@@ -211,7 +214,12 @@ Allows you to write resusable code that works accross multiple types
 
 
 ```typescript
-function map<T, U>(items: T[], mapper: (item: T) => U): U[]
+// Instead of having multiple functions
+function mapDogs(items: Dog[], mapper: (item: Dog) => any): void;
+function mapCats(items: Cat[], mapper: (item: Cat) => any): void;
+
+// Have a single function where the type is decided at compile time
+function map<T, U>(items: T[], mapper: (item: T) => U): U[];
 
 let numbers: number[] = [1,2,3]
 let strings: string[] = map([1,2,3], i => "num " + i);

@@ -7,13 +7,6 @@ $slidesHtml = `
     |% {
         Write-Host "Found slide: $($_.FullName)";
         $content = Get-Content $_ -Raw;
-        $htmlContent = @"
-        <section data-markdown>
-            <textarea data-template>
-$content
-            </textarea>
-        </section>
-"@
 
         $htmlContent = @"
         <section>
@@ -38,7 +31,7 @@ $endIdx = $indexHtml.IndexOf($endToken);
 $startHtml = $indexHtml.Substring(0, $startIdx);
 $endHtml = $indexHtml.Substring($endIdx + $endToken.Length);
 
-$indexHtml = $startHtml + "`n" + $startToken + "`n" + $slidesHtml + "`n" + $endToken + "`n" + $endHtml;
+$indexHtml = $startHtml + $startToken + "`n" + $slidesHtml + "`n" + $endToken + $endHtml;
 
 #Write-Host "Updated:`n----------------`n$indexHtml`n----------------`n";
 
